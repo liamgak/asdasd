@@ -57,10 +57,12 @@ def DBUpdate(updated_block, new_block):
                 # if tx is not reward transaction, tx is dictionary type
                 # real data: if tx['opration']!='2':
                 print('[Update] emr data is added!')
+                
                 url="http://localhost:2442/api/v1/tx/"
                 url=url+tx['hash']
                 respond=requests.get(url)
                 parsed_data=json.loads(respond.text)
+                print(parsed_data)
                 tx_insert=dict()
                 tx_insert['RowKey']=str(latest.count)
                 tx_insert['PartitionKey']='EMR'
